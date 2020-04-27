@@ -28,6 +28,7 @@ class ArticleViewModel(private val articleId: String) : BaseViewModel<ArticleSta
 
 
 
+
             )
         }
 
@@ -36,14 +37,15 @@ class ArticleViewModel(private val articleId: String) : BaseViewModel<ArticleSta
             state.copy(
                 isLoadingContent = false,
                 content = content
+
             )
         }
         subscribeOnDataSource(getArticlePersonalInfo()){ info, state ->
             info ?: return@subscribeOnDataSource null
             state.copy(
                 isBookmark = info.isBookmark,
-                isLike = info.isLike,
-                isShowMenu = info.isShowMenu
+                isLike = info.isLike
+
             )
         }
 
@@ -51,6 +53,8 @@ class ArticleViewModel(private val articleId: String) : BaseViewModel<ArticleSta
             state.copy(
                 isDarkMode = settings.isDarkMode,
                 isBigText = settings.isBigText
+
+
             )
 
         }
