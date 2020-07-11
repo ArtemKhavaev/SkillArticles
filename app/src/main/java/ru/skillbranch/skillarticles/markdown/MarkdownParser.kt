@@ -35,8 +35,16 @@ object MarkdownParser {
      * clear markdown text to string without markdown characters
      */
     fun clear(string: String?): String?{
-        return null
-        //TODO
+        val result1 = string?.let { Regex(UNORDERED_LIST_ITEM_GROUP).replace(it, "") }
+        val result2 = result1?.let { Regex(HEADER_GROUP).replace(it, "") }
+        val result3 = result2?.let { Regex(QUOTE_GROUP).replace(it, "") }
+        val result4 = result3?.let { Regex(ITALIC_GROUP).replace(it, "") }
+        val result5 = result4?.let { Regex(BOLD_GROUP).replace(it, "") }
+        val result6 = result5?.let { Regex(STRIKE_GROUP).replace(it, "") }
+        val result7 = result6?.let { Regex(RULE_GROUP).replace(it, "") }
+        val result8 = result7?.let { Regex(INLINE_GROUP).replace(it, "") }
+        val result = result8?.let { Regex(LINK_GROUP).replace(it, "") }
+        return result
     }
 
     /**
