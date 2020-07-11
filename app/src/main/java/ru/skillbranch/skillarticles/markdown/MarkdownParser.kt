@@ -35,15 +35,26 @@ object MarkdownParser {
      * clear markdown text to string without markdown characters
      */
     fun clear(string: String?): String?{
-        val result1 = string?.let { Regex(UNORDERED_LIST_ITEM_GROUP).replace(it, "") }
-        val result2 = result1?.let { Regex(HEADER_GROUP).replace(it, "") }
-        val result3 = result2?.let { Regex(QUOTE_GROUP).replace(it, "") }
-        val result4 = result3?.let { Regex(ITALIC_GROUP).replace(it, "") }
-        val result5 = result4?.let { Regex(BOLD_GROUP).replace(it, "") }
-        val result6 = result5?.let { Regex(STRIKE_GROUP).replace(it, "") }
-        val result7 = result6?.let { Regex(RULE_GROUP).replace(it, "") }
-        val result8 = result7?.let { Regex(INLINE_GROUP).replace(it, "") }
-        val result = result8?.let { Regex(LINK_GROUP).replace(it, "") }
+        var result: String? = null
+        var result1: String? = null
+        var result2: String? = null
+        var result3: String? = null
+        var result4: String? = null
+        var result5: String? = null
+        var result6: String? = null
+        var result7: String? = null
+        var result8: String? = null
+        while(string?.let { Regex(MARKDOWN_GROUPS).containsMatchIn(it) }!!) {
+             result1 =  Regex(UNORDERED_LIST_ITEM_GROUP).replace(string, "")
+             result2 = Regex(HEADER_GROUP).replace(result1, "")
+             result3 = Regex(QUOTE_GROUP).replace(result2, "")
+             result4 = Regex(ITALIC_GROUP).replace(result3, "")
+             result5 = Regex(BOLD_GROUP).replace(result4, "")
+             result6 = Regex(STRIKE_GROUP).replace(result5, "")
+             result7 = Regex(RULE_GROUP).replace(result6, "")
+             result8 = Regex(INLINE_GROUP).replace(result7, "")
+            result = Regex(LINK_GROUP).replace(result8, "")
+        }
         return result
     }
 
