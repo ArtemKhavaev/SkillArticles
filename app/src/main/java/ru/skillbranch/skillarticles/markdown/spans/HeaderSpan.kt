@@ -110,7 +110,7 @@ class HeaderSpan constructor(
 //        val oldSize = paint.textSize
 //        paint.textSize*=sizes[level]!!
 //        paint.textSize = oldSize
-        canvas.drawFontLines(lineTop, lineBottom, lineBaseline, paint)
+//        canvas.drawFontLines(lineTop, lineBottom, lineBaseline, paint)
 
     }
 

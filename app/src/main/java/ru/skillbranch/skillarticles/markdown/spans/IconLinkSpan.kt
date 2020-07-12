@@ -82,10 +82,11 @@ class IconLinkSpan(
         val oldStyle = style
         val oldWidth = strokeWidth
 
+        pathEffect = dashs
         color = textColor
         style = Paint.Style.STROKE
         strokeWidth = 0f
-        pathEffect = dashs
+
 
         block()
         color = oldColor

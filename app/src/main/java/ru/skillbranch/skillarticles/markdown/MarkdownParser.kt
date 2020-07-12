@@ -35,27 +35,56 @@ object MarkdownParser {
      * clear markdown text to string without markdown characters
      */
     fun clear(string: String?): String?{
-        var result: String? = null
-        var result1: String? = null
-        var result2: String? = null
-        var result3: String? = null
-        var result4: String? = null
-        var result5: String? = null
-        var result6: String? = null
-        var result7: String? = null
-        var result8: String? = null
-        while(string?.let { Regex(MARKDOWN_GROUPS).containsMatchIn(it) }!!) {
-             result1 =  Regex(UNORDERED_LIST_ITEM_GROUP).replace(string, "")
-             result2 = Regex(HEADER_GROUP).replace(result1, "")
-             result3 = Regex(QUOTE_GROUP).replace(result2, "")
-             result4 = Regex(ITALIC_GROUP).replace(result3, "")
-             result5 = Regex(BOLD_GROUP).replace(result4, "")
-             result6 = Regex(STRIKE_GROUP).replace(result5, "")
-             result7 = Regex(RULE_GROUP).replace(result6, "")
-             result8 = Regex(INLINE_GROUP).replace(result7, "")
-            result = Regex(LINK_GROUP).replace(result8, "")
+        var str = string
+        while(str?.let { Regex("""#""").containsMatchIn(it) }!!){
+            str =  Regex("""#""").replace(str, "")
         }
-        return result
+        var str1 = str
+        while(str1?.let { Regex("""_""").containsMatchIn(it) }!!){
+            str1 =  Regex("""_""").replace(str1, "")
+        }
+        var str2 = str1
+        while(str2?.let { Regex("""\*""").containsMatchIn(it) }!!){
+            str2 =  Regex("""\*""").replace(str2, "")
+        }
+        var str3 = str2
+        while(str3?.let { Regex("""`""").containsMatchIn(it) }!!){
+            str3 =  Regex("""`""").replace(str3, "")
+        }
+        var str4 = str3
+        while(str4?.let { Regex("""~""").containsMatchIn(it) }!!){
+            str4 =  Regex("""~""").replace(str4, "")
+        }
+        var str5 = str4
+        while(str5?.let { Regex("""> """).containsMatchIn(it) }!!){
+            str5 =  Regex("""> """).replace(str5, "")
+        }
+        var str6 = str5
+        while(str6?.let { Regex("""\+""").containsMatchIn(it) }!!){
+            str6 =  Regex("""\+""").replace(str6, "")
+        }
+        var str7 = str6
+        while(str7?.let { Regex("""-""").containsMatchIn(it) }!!){
+            str7 =  Regex("""-""").replace(str7, "")
+        }
+        var str8 = str7
+        while(str8?.let { Regex("""\[""").containsMatchIn(it) }!!){
+            str8 =  Regex("""\[""").replace(str8, "")
+        }
+        var str9 = str8
+        while(str9?.let { Regex("""]""").containsMatchIn(it) }!!){
+            str9 =  Regex("""]""").replace(str9, "")
+        }
+        var str10 = str9
+        while(str10?.let { Regex("""\)""").containsMatchIn(it) }!!){
+            str10 =  Regex("""\)""").replace(str10, "")
+        }
+        var str11 = str10
+        while(str11?.let { Regex("""\(""").containsMatchIn(it) }!!){
+            str11 =  Regex("""\(""").replace(str11, "")
+        }
+
+        return str11
     }
 
     /**

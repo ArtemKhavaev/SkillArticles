@@ -15,7 +15,7 @@ import ru.skillbranch.skillarticles.markdown.MarkdownParser
 import ru.skillbranch.skillarticles.viewmodels.base.BaseViewModel
 import ru.skillbranch.skillarticles.viewmodels.base.IViewModelState
 import ru.skillbranch.skillarticles.viewmodels.base.Notify
-//import java.util.Collections.emptyList
+
 
 class ArticleViewModel(private val articleId: String) :
     BaseViewModel<ArticleState>(ArticleState()), IArticleViewModel{
@@ -42,7 +42,6 @@ class ArticleViewModel(private val articleId: String) :
             state.copy(
                 isLoadingContent = false,
                 content = content
-
             )
         }
         subscribeOnDataSource(getArticlePersonalInfo()){ info, state ->
@@ -50,7 +49,6 @@ class ArticleViewModel(private val articleId: String) :
             state.copy(
                 isBookmark = info.isBookmark,
                 isLike = info.isLike
-
             )
         }
 

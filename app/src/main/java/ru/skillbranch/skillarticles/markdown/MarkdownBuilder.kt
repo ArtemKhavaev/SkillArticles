@@ -79,7 +79,6 @@ class MarkdownBuilder(context: Context) {
                         }
                     }
                 }
-                //TODO strike
                 is Element.Strike -> {
                     inSpans(StrikethroughSpan()){
                         for(child in element.elements){

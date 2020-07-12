@@ -30,7 +30,6 @@ class BlockquotesSpan(
                 paint
             )
         }
-
     }
 
     override fun getLeadingMargin(first: Boolean): Int {
